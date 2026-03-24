@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CHEF.Sache – Afterwork for Leaders | WINTERFEST Leadership Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1a2232;
+      --navy2:  #0f1824;
+      --orange: #f97316;
+      --white:  #ffffff;
+      --light:  #f4f6f9;
+      --text:   #2c3e50;
+      --muted:  #64748b;
+      --border: #e2e8f0;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); font-size: 16px; line-height: 1.6; }
+
+    /* HEADER */
+    header { background: var(--navy); padding: 0 48px; height: 76px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.25); }
+    .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-icon { width: auto; height: 56px; flex-shrink: 0; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; text-transform: uppercase; transition: color .2s; }
+    nav a:hover { color: var(--white); }
+    nav a.cta-nav { background: var(--orange); color: var(--white); padding: 8px 18px; border-radius: 6px; }
+    nav a.cta-nav:hover { background: #ea6a0a; }
+
+    /* HERO */
+    .hero { background: var(--navy); color: var(--white); padding: 88px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.08) 0%, transparent 65%); pointer-events: none; }
+    .eyebrow { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 20px; border-radius: 100px; margin-bottom: 28px; }
+    .hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.15; max-width: 760px; margin: 0 auto 24px; letter-spacing: -0.01em; }
+    .hero h1 em { color: var(--orange); font-style: normal; }
+    .hero .lead { font-size: 1.1rem; line-height: 1.75; max-width: 580px; margin: 0 auto 40px; color: rgba(255,255,255,0.8); }
+    .pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); color: rgba(255,255,255,0.82); border-radius: 100px; padding: 7px 18px; font-size: 0.82rem; }
+
+    /* WAVE */
+    .wave { background: var(--navy); line-height: 0; }
+    .wave svg { display: block; width: 100%; }
+
+    /* TERMINE SECTION */
+    .termine { background: var(--light); padding: 64px 24px 72px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: 1.65rem; font-weight: 800; color: var(--navy); text-align: center; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .section-sub { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 44px; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: var(--white); border-radius: 12px; padding: 28px 24px; border-top: 3px solid var(--orange); box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+    .card-month { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+    .card-date { font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; }
+    .card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+    .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .card a.btn { display: block; text-align: center; background: var(--orange); color: var(--white); text-decoration: none; padding: 11px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.03em; transition: background .2s; }
+    .card a.btn:hover { background: #ea6a0a; }
+    .card a.btn.disabled { background: var(--light); color: var(--muted); pointer-events: none; border: 1px solid var(--border); }
+
+    /* TRUST BAR */
+    .trust { background: var(--navy2); color: var(--white); padding: 52px 24px; text-align: center; }
+    .trust .section-title { color: var(--white); margin-bottom: 8px; }
+    .trust .lead { font-size: 0.92rem; color: rgba(255,255,255,0.6); max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 56px; }
+    .stat strong { display: block; font-size: 2.4rem; font-weight: 800; color: var(--orange); letter-spacing: -0.02em; }
+    .stat span { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* CTA BAND */
+    .cta-band { background: var(--orange); padding: 48px 24px; text-align: center; }
+    .cta-band h2 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .cta-band p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 28px; }
+    .btn-white { display: inline-block; background: var(--white); color: var(--orange); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; padding: 14px 32px; border-radius: 8px; text-decoration: none; transition: opacity .2s; }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer { background: var(--navy2); color: rgba(255,255,255,0.35); font-size: 0.78rem; padding: 22px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--white); }
+    .footer-links { display: flex; gap: 20px; }
+
+    @media (max-width: 680px) {
+      header { padding: 0 20px; }
+      nav a:not(.cta-nav) { display: none; }
+      footer { flex-direction: column; text-align: center; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://winterfest.academy" class="logo-wrap">
+    <img class="logo-icon" src="Winterfest-Leadership-Academy-2-g.png" alt="WINTERFEST Leadership Academy">
+  </a>
+  <nav>
+    <a href="https://winterfest.academy/programme">Programme</a>
+    <a href="https://winterfest.academy/events">Events</a>
+    <a href="https://winterfest.academy/kontakt" class="cta-nav">Kontakt</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Afterwork for Leaders</div>
+  <h1>CHEF.<em>Sache</em></h1>
+  <p class="lead">Ein Abend für Führungskräfte im Mittelstand – ehrlich, klar, ohne Bühne. Echter Austausch. Klare Impulse. Konkrete Gedanken für den nächsten Tag.</p>
+  <div class="pills">
+    <span class="pill">📍 Straubing – Regensburger Str. 79</span>
+    <span class="pill">🕕 Dienstags 18:00 – 19:30 Uhr</span>
+    <span class="pill">👥 Max. 12 Teilnehmer</span>
+    <span class="pill">⏱ 90 Minuten – kein Bullshit</span>
+  </div>
+</section>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 48 C360 0 1080 0 1440 48 L1440 0 L0 0 Z" fill="#1a2232"/>
+  </svg>
+</div>
+
+<!-- TERMINE -->
+<section class="termine">
+  <div class="section-inner">
+    <h2 class="section-title">Alle Termine 2026 / 2027</h2>
+    <p class="section-sub">Wähle deinen Abend – und melde dich direkt an.</p>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-month">April 2026</div>
+        <div class="card-date">Di, 14. April 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Delegieren – Warum du immer noch alles selbst machst</h3>
+        <p>Du weißt, dass du loslassen solltest. Und trotzdem landet alles wieder auf deinem Tisch. Dieser Abend zeigt, woran Delegation wirklich scheitert – und was du morgen früh anders machen kannst.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHE-DELEGIEREN260414" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Mai 2026</div>
+        <div class="card-date">Di, 05. Mai 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Mitdenkende Unternehmenskultur – Wer wartet hier eigentlich auf wen?</h3>
+        <p>Mitarbeitende, die abwarten. Führungskräfte, die alles anschieben. Dieser Abend fragt: Was braucht eine Kultur, damit Menschen wirklich mitdenken?</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHEMITDENKEN260505" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Juni 2026</div>
+        <div class="card-date">Di, 09. Juni 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Loslassen – Was dich wirklich aufhält</h3>
+        <p>Nicht jede Aufgabe, die du behältst, behältst du aus Überzeugung. Manchmal ist es Gewohnheit, manchmal Angst. Dieser Abend macht den Unterschied sichtbar.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHELOSLASSEN260609" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Juli 2026</div>
+        <div class="card-date">Di, 07. Juli 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Delegieren – Verantwortung übergeben, ohne die Kontrolle zu verlieren</h3>
+        <p>Delegation ist kein Vertrauensvorschuss ins Blaue. Dieser Abend zeigt, wie du Verantwortung klar übergibst – und trotzdem weißt, was läuft.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHE-DELEGIEREN260707" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">August 2026</div>
+        <div class="card-date">Di, 04. August 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Mitdenkende Unternehmenskultur – Eigenverantwortung, die wirklich funktioniert</h3>
+        <p>Eigenverantwortung lässt sich nicht anordnen. Dieser Abend zeigt, welche Bedingungen du schaffen musst – und welche du vielleicht gerade verhinderst.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHEMITDENKEN260804" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">September 2026</div>
+        <div class="card-date">Di, 01. September 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Loslassen – Wenn Führung zum Flaschenhals wird</h3>
+        <p>Irgendwann läuft alles über dich. Dieser Abend zeigt, wie du aufhörst, der Engpass in deinem eigenen Unternehmen zu sein.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHELOSLASSEN260901" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Oktober 2026</div>
+        <div class="card-date">Di, 06. Oktober 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Delegieren – Die richtigen Aufgaben an die richtigen Menschen</h3>
+        <p>Nicht jeder kann alles. Dieser Abend zeigt, wie du erkennst, wem du was wirklich anvertrauen kannst – und wie du das Gespräch führst.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHE-DELEGIEREN261006" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">November 2026</div>
+        <div class="card-date">Di, 03. November 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Mitdenkende Unternehmenskultur – Wie Führung Kultur formt</h3>
+        <p>Kultur entsteht nicht durch Leitbilder. Sie entsteht durch das, was du täglich tust und zulässt. Dieser Abend macht sichtbar, welche Signale du sendest.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHEMITDENKEN261103" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Dezember 2026</div>
+        <div class="card-date">Di, 01. Dezember 2026 · 18:00 – 19:30 Uhr</div>
+        <h3>Loslassen – Das Jahr loslassen, das neue beginnen</h3>
+        <p>Was nimmst du mit ins neue Jahr – und was lässt du bewusst zurück? Ein Abend zum Innehalten und Klarmachen, was wirklich zählt.</p>
+        <a class="btn" href="https://rainerwinter.zohobackstage.eu/CHEFSACHELOSLASSEN261201" target="_blank">Jetzt Platz sichern</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Januar 2027</div>
+        <div class="card-date">Di, 12. Januar 2027 · 18:00 – 19:30 Uhr</div>
+        <h3>Delegieren – Neustart mit klaren Strukturen</h3>
+        <p>Ein neues Jahr ist die beste Gelegenheit, alte Muster zu durchbrechen. Delegation von Anfang an richtig aufsetzen – bevor sich wieder alles einschleift.</p>
+        <a class="btn disabled" href="#">Anmeldung folgt</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">Februar 2027</div>
+        <div class="card-date">Di, 02. Februar 2027 · 18:00 – 19:30 Uhr</div>
+        <h3>Mitdenkende Unternehmenskultur – Wenn Teams wirklich funktionieren</h3>
+        <p>Was unterscheidet ein Team, das mitdenkt, von einem, das wartet? Was du als Führungskraft konkret tun kannst – heute, nicht irgendwann.</p>
+        <a class="btn disabled" href="#">Anmeldung folgt</a>
+      </div>
+
+      <div class="card">
+        <div class="card-month">März 2027</div>
+        <div class="card-date">Di, 02. März 2027 · 18:00 – 19:30 Uhr</div>
+        <h3>Loslassen – Ein Jahr CHEF.Sache: Was bleibt?</h3>
+        <p>Der letzte Abend des Jahres. Die ehrliche Frage: Was hat sich verändert? Was nimmst du mit? Und was fängst du jetzt endlich an?</p>
+        <a class="btn disabled" href="#">Anmeldung folgt</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust">
+  <h2 class="section-title">Über 10 Jahre. Mittelstand. Ein Team, eine Haltung.</h2>
+  <p class="lead">WINTERFEST begleitet Führungskräfte, die ihren Alltag nicht mehr nur verwalten wollen.</p>
+  <div class="stats">
+    <div class="stat"><strong>200+</strong><span>Führungskräfte begleitet</span></div>
+    <div class="stat"><strong>60+</strong><span>Unternehmen</span></div>
+    <div class="stat"><strong>10+</strong><span>Jahre Erfahrung</span></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Lieber erst ein Gespräch?</h2>
+  <p>20 Minuten Potenzialgespräch. Nur Klarheit – kein Verkaufsdruck.</p>
+  <a class="btn-white" href="https://zeeg.me/winterfest/Potenzialgespraech" target="_blank">Termin buchen →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 WINTERFEST Leadership Academy · office@winterfest.academy</span>
+  <div class="footer-links">
+    <a href="https://winterfest.academy/impressum">Impressum</a>
+    <a href="https://winterfest.academy/datenschutz">Datenschutz</a>
+    <a href="https://winterfest.academy/kontakt">Kontakt</a>
+  </div>
+</footer>
+
+</body>
+</html>
